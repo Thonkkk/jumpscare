@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Time Counter</title>
+    <style>
+      body {
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      h1 {
+        color: white;
+        font-size: 48px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="time"></h1>
+    <script>
+      // Set the start time
+      let startTime = Date.now();
+
+      function updateTime() {
+        // Calculate the elapsed time in seconds
+        const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+        // Calculate the hours, minutes, and seconds from the elapsed time
+        const hours = Math.floor(elapsedTime / 3600);
+        const minutes = Math.floor((elapsedTime % 3600) / 60);
+        const seconds = elapsedTime % 60;
+        // Format the elapsed time as a string (e.g. "12:34:56")
+        const timeString = `${hours}:${minutes}:${seconds}`;
+        // Get the time element and update its text content
+        const timeElement = document.getElementById('time');
+        timeElement.textContent = timeString;
+      }
+      // Update the time every second
+      setInterval(updateTime, 1000);
+    </script>
+  </body>
+</html>
